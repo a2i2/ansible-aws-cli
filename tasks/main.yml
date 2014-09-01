@@ -24,8 +24,8 @@
 
 - name: 'Copy AWS CLI config'
   tags: 'aws-cli'
-  copy: >
-    src=aws_cli_config
+  template: >
+    src=aws_cli_config.j2
     dest=/home/{{ aws_cli_user }}/.aws/config
     owner={{ aws_cli_user }}
     group={{ aws_cli_user }}
