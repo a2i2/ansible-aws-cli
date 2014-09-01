@@ -16,17 +16,17 @@
 - name: 'Create the AWS config directory'
   tags: 'aws-cli'
   file: >
-    path={{ deployment_user_home }}/.aws
+    path=/home/{{ aws_cli_user }}/.aws
     state=directory
-    owner={{ deployment_user }}
-    group={{ deployment_user }}
+    owner={{ aws_cli_user }}
+    group={{ aws_cli_user }}
     mode=0755
 
 - name: 'Copy AWS CLI config'
   tags: 'aws-cli'
   copy: >
     src=aws_cli_config
-    dest={{ deployment_user_home }}/.aws/config
-    owner={{ deployment_user }}
-    group={{ deployment_user }}
+    dest=/home/{{ aws_cli_user }}/.aws/config
+    owner={{ aws_cli_user }}
+    group={{ aws_cli_user }}
     mode=0644
