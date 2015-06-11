@@ -19,7 +19,7 @@ The default variables are as follows:
 
     - hosts: 'servers'
       roles:
-        - role: 'ssilab.golang'
+        - role: 'ssilab.aws-cli'
           aws_output_format: 'json'
           aws_region: 'ap-southeast-2'
           aws_access_key_id: 'SUPER_SECRET_ACCESS_KEY_ID'   # Don't version this or put it on pastebin
