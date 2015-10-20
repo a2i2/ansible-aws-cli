@@ -22,6 +22,18 @@
     owner={{ aws_cli_user }}
     group={{ aws_cli_user }}
     mode=0755
+  when: "not {{ aws_cli_user }} == \"root\""
+
+- name: 'Create the AWS config directory'
+  tags: 'aws-cli'
+  sudo: 'yes'
+  file: >
+    path=/root/.aws
+    state=directory
+    owner=root
+    group=root
+    mode=0755
+  when: "{{ aws_cli_user }} == \"root\""
 
 - name: 'Copy AWS CLI config'
   tags: 'aws-cli'
