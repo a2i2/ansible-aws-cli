@@ -13,11 +13,21 @@
     name=awscli
     state=latest
 
+- name: Set home directory of the user
+  set_fact:
+    home_dir: /home/{{ aws_cli_user }}
+  when: "not {{ aws_cli_user }} == \"root\""
+
+- name: Set home directory for root
+  set_fact:
+    home_dir: /root
+  when: "{{ aws_cli_user }} == \"root\""
+
 - name: 'Create the AWS config directory'
   tags: 'aws-cli'
   sudo: 'yes'
   file: >
-    path=/home/{{ aws_cli_user }}/.aws
+    path={{ home_dir }}/.aws
     state=directory
     owner={{ aws_cli_user }}
     group={{ aws_cli_user }}
@@ -28,7 +38,7 @@
   sudo: 'yes'
   template: >
     src=aws_cli_config.j2
-    dest=/home/{{ aws_cli_user }}/.aws/config
+    dest={{ home_dir }}/.aws/config
     owner={{ aws_cli_user }}
     group={{ aws_cli_user }}
     mode=0644
