@@ -2,7 +2,7 @@
 galaxy_info:
   author: 'Rohan Liston'
   description: 'Installs and configures the AWS CLI for conveniently interacting with AWS services such as S3.'
-  company: 'SSIL'
+  company: 'DSTIL'
   license: 'BSD'
   min_ansible_version: 1.6
   platforms:
