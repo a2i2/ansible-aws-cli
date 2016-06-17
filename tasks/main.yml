@@ -41,4 +41,4 @@
     dest={{ home_dir }}/.aws/config
     owner={{ aws_cli_user }}
     group={{ aws_cli_user }}
-    mode=0644
+    mode=0600
