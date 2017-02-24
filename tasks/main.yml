@@ -30,7 +30,7 @@
     path={{ home_dir }}/.aws
     state=directory
     owner={{ aws_cli_user }}
-    group={{ aws_cli_user }}
+    group={{ aws_cli_group }}
     mode=0755
 
 - name: 'Copy AWS CLI config'
@@ -40,5 +40,5 @@
     src=aws_cli_config.j2
     dest={{ home_dir }}/.aws/config
     owner={{ aws_cli_user }}
-    group={{ aws_cli_user }}
+    group={{ aws_cli_group }}
     mode=0600
