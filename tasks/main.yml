@@ -16,12 +16,12 @@
 - name: Set home directory of the user
   set_fact:
     home_dir: /home/{{ aws_cli_user }}
-  when: "not \"{{ aws_cli_user }}\" == \"root\""
+  when: "not aws_cli_user == 'root'"
 
 - name: Set home directory for root
   set_fact:
     home_dir: /root
-  when: "\"{{ aws_cli_user }}\" == \"root\""
+  when: "aws_cli_user == 'root'"
 
 - name: 'Create the AWS config directory'
   tags: 'aws-cli'
