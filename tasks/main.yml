@@ -42,3 +42,13 @@
     owner={{ aws_cli_user }}
     group={{ aws_cli_group }}
     mode=0600
+
+- name: 'Copy AWS CLI credentials'
+  tags: 'aws-cli'
+  become: 'yes'
+  template: >
+    src=aws_cli_credentials.j2
+    dest={{ home_dir }}/.aws/credentials
+    owner={{ aws_cli_user }}
+    group={{ aws_cli_group }}
+    mode=0600
