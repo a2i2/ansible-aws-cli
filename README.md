@@ -4,7 +4,8 @@ Installs and configures the AWS CLI for conveniently interacting with AWS servic
 
 ## Requirements
 
-Tested on Ubuntu 12.04 Server.
+-   Tested on Ubuntu 12.04 Server;
+-   Ansible 2.0+
 
 ## Role Variables
 
