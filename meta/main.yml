@@ -9,6 +9,9 @@ galaxy_info:
   - name: 'Ubuntu'
     versions:
       - 'precise'
+      - 'thruty'
+      - 'xenial'
+      - 'bionic'
   categories:
     - 'development'
 dependencies: []

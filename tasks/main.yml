@@ -1,54 +1,33 @@
 ---
 - name: 'Install Python PIP'
-  tags: 'aws-cli'
   become: 'yes'
-  apt: >
-    pkg=python-pip
-    state=latest
+  apt:
+    pkgi: python-pip
+    state: latest
 
 - name: 'Install AWS CLI'
-  tags: 'aws-cli'
   become: 'yes'
-  pip: >
-    name=awscli
-    state=latest
-
-- name: Set home directory of the user
-  set_fact:
-    home_dir: /home/{{ aws_cli_user }}
-  when: "not aws_cli_user == 'root'"
-
-- name: Set home directory for root
-  set_fact:
-    home_dir: /root
-  when: "aws_cli_user == 'root'"
+  pip:
+    name: awscli
+    state: latest
 
 - name: 'Create the AWS config directory'
-  tags: 'aws-cli'
   become: 'yes'
-  file: >
-    path={{ home_dir }}/.aws
-    state=directory
-    owner={{ aws_cli_user }}
-    group={{ aws_cli_group }}
-    mode=0755
+  file:
+    path: "{{ aws_home }}/.aws"
+    state: directory
+    owner: "{{ aws_cli_user }}"
+    group: "{{ aws_cli_group }}"
+    mode: 0755
 
-- name: 'Copy AWS CLI config'
-  tags: 'aws-cli'
+- name: 'Deploy AWS CLI config and credentials'
   become: 'yes'
-  template: >
-    src=aws_cli_config.j2
-    dest={{ home_dir }}/.aws/config
-    owner={{ aws_cli_user }}
-    group={{ aws_cli_group }}
-    mode=0600
-
-- name: 'Copy AWS CLI credentials'
-  tags: 'aws-cli'
-  become: 'yes'
-  template: >
-    src=aws_cli_credentials.j2
-    dest={{ home_dir }}/.aws/credentials
-    owner={{ aws_cli_user }}
-    group={{ aws_cli_group }}
-    mode=0600
+  template:
+    src: item.src
+    dest: "{{ aws_home }}/.aws/{{ item.dest }}"
+    owner: "{{ aws_cli_user }}"
+    group: "{{ aws_cli_group }}"
+    mode: 0600
+    with_items:
+      - { src: 'aws_cli_config.j2', dest: 'config' }
+      - { src: 'aws_cli_credentials.j2', dest: 'credentials' }
