@@ -13,9 +13,9 @@ The default variables are as follows:
     aws_access_key_id: 'YOUR_ACCESS_KEY_ID'
     aws_secret_access_key: 'YOUR_SECRET_ACCESS_KEY'
 
-    aws_cli_user: 'root'
-    aws_cli_group: 'root'
-    aws_home: '/root'
+    aws_cli_user: '{{ ansible_user }}'
+    aws_cli_group: '{{ ansible_user }}'
+    aws_home: '/home/{{ ansible_user }}'
 
 Requirements
 --------------------

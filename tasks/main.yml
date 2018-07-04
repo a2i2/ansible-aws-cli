@@ -2,7 +2,7 @@
 - name: 'Install Python PIP'
   become: 'yes'
   apt:
-    pkgi: python-pip
+    pkg: python-pip
     state: latest
 
 - name: 'Install AWS CLI'
