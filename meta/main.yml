@@ -9,7 +9,7 @@ galaxy_info:
   - name: 'Ubuntu'
     versions:
       - 'precise'
-      - 'truty'
+      - 'trusty'
       - 'xenial'
       - 'bionic'
   categories:
