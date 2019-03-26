@@ -1,3 +1,7 @@
+# DEPRECATION NOTICE
+
+We have moved away from Ansible and are in the process of removing or transferring ownership of our Ansible repositories. If you rely on this repository directly, please make arrangements to replace this dependency with your own fork.
+
 # AWS CLI role for Ansible
 
 Installs and configures the AWS CLI for conveniently interacting with AWS services such as S3.
